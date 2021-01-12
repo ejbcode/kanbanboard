@@ -2,7 +2,16 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Steps
+
+npm install normalize.css
+import 'normalize.css'
+npm install --save styled-components
+create a globalstyle and imported in the app.js
+
+npm install react-icons --save
+
+Config wesbos eslint config npx install-peerdeps --dev eslint-config-wesbos
 
 In the project directory, you can run:
 
