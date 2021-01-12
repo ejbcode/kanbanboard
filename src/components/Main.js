@@ -1,10 +1,11 @@
 import { Search } from './Search';
+import Boards from './uiComponents/Boards';
 
 const Main = () => (
-  <div>
+  <main>
     <Search />
-    <p>main</p>
-  </div>
+    <Boards />
+  </main>
 );
 
 export default Main;
