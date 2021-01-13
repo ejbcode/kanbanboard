@@ -2,16 +2,16 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import styled from 'styled-components';
 
 const InputStyle = styled.div`
-  flex: 1 0 0;
-
   border-bottom: gray solid 1px;
   width: 100%;
+
+  height: 100%;
   /* height: 2rem; */
   input {
     padding: 1rem 0;
   }
   input[type='text'] {
-    width: 90%;
+    width: 50%;
     border: none;
     background: transparent;
   }

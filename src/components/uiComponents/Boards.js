@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Board from './Board';
 
@@ -8,13 +9,24 @@ const BoardsStyle = styled.section`
   }
 `;
 
-const Boards = () => (
-  <BoardsStyle>
-    <Board title="Request" color="red" />
-    <Board title="In Progress" color="blue" />
-
-    <Board title="Done" color="yellow" />
-  </BoardsStyle>
-);
+const Boards = () => {
+  const { taskItems, taskStatus } = useSelector((state) => state.tasks);
+  return (
+    <BoardsStyle>
+      {taskStatus.map((status) => {
+        const tasks = taskItems.filter((task) => task.status === status.type);
+        return (
+          <Board
+            key={status.type}
+            status={status}
+            tasks={tasks}
+            title={status.type}
+            color={status.color}
+          />
+        );
+      })}
+    </BoardsStyle>
+  );
+};
 
 export default Boards;

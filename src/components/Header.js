@@ -1,17 +1,22 @@
 import styled from 'styled-components';
+import SearchInput from './uiComponents/SearchInput';
+
+const HeaderStyle = styled.header`
+  display: flex;
+  align-items: center;
+  margin: 2rem 0;
+  border: red solid 1px;
+`;
 
 const NavStyled = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
+  width: 100%;
 `;
 
 const Header = () => (
-  <header>
-    <NavStyled>
-      <p>📋KanbanBoard</p>
-    </NavStyled>
-  </header>
+  <HeaderStyle>
+    <NavStyled>📋KanbanBoard</NavStyled>
+    <SearchInput />
+  </HeaderStyle>
 );
 
 export default Header;

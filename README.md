@@ -5,13 +5,22 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Steps
 
 npm install normalize.css
+
 import 'normalize.css'
+
 npm install --save styled-components
+
 create a globalstyle and imported in the app.js
 
 npm install react-icons --save
 
 Config wesbos eslint config npx install-peerdeps --dev eslint-config-wesbos
+
+work in UI
+
+npm install --save redux-thunk
+
+npm i redux react-redux
 
 In the project directory, you can run:
 
