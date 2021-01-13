@@ -1,13 +1,7 @@
 import styled from 'styled-components';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { changeStatus } from '../../redux/actions/taskActions';
-
-const SetLoadNewTaskStyle = styled.div`
-  :nth-child(1) {
-    display: none;
-  }
-`;
 
 const LiStyle = styled.li`
   min-height: 15rem;

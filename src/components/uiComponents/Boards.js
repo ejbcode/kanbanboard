@@ -18,15 +18,13 @@ const Boards = () => {
       {taskStatus.map((status) => {
         const tasks = taskItems.filter((task) => task.status === status.id);
         return (
-          <>
-            <Board
-              key={status.id}
-              status={status}
-              tasks={tasks}
-              title={status.type}
-              color={status.color}
-            />
-          </>
+          <Board
+            key={status.id}
+            status={status}
+            tasks={tasks}
+            title={status.type}
+            color={status.color}
+          />
         );
       })}
     </BoardsStyle>
