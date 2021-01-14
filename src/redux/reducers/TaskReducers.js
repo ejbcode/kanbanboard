@@ -2,6 +2,7 @@ import { types } from '../types';
 
 const initialState = {
   addingTask: false,
+  path: 'allTasks',
   taskStatus: [
     { id: 0, type: 'BackLog 📋', color: '#FA3C4C' },
     { id: 1, type: 'In Progress 📝', color: '#0084FF' },
@@ -61,6 +62,9 @@ export const taskReducer = (state = initialState, action) => {
 
     case types.ADD_TASK:
       return { ...state, addingTask: true };
+
+    case types.SET_DB:
+      return { ...state, path: action.payload };
 
     default:
       return state;

@@ -42,6 +42,7 @@ const FormStyle = styled.form`
     width: 100%;
     resize: none;
     margin-bottom: 1rem;
+    padding: 1rem;
   }
   .button-section {
     text-align: right;
