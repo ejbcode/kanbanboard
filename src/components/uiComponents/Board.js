@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { addTaskInFirestore } from '../../redux/actions/taskActions';
 import BoardItem from './BoardItem';
 
 const BoardStyle = styled.div`
@@ -54,18 +55,16 @@ const FormStyle = styled.form`
 
 const Board = ({ tasks, status }) => {
   const { addingTask } = useSelector((state) => state.tasks);
+  const dispatch = useDispatch();
   const [contentNewTask, setContentNewTask] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(contentNewTask);
+    dispatch(addTaskInFirestore(contentNewTask));
   };
 
   const handleChange = (event) => {
-    setContentNewTask({
-      ...contentNewTask,
-      [event.target.name]: event.target.value,
-    });
+    setContentNewTask(event.target.value);
   };
   return (
     <BoardStyle color={status.color}>

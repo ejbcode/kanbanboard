@@ -5,12 +5,13 @@ import Header from './components/Header';
 import Main from './components/Main';
 import { firebase } from './firebaseConfig';
 import { login } from './redux/actions/authActions';
-import { setDB } from './redux/actions/taskActions';
+import { loadTask, setDB } from './redux/actions/taskActions';
 
 const App = () => {
   const dispatch = useDispatch();
   const [checking, setChecking] = useState(true);
   useEffect(() => {
+    dispatch(loadTask());
     firebase.auth().onAuthStateChanged(async (user) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));

@@ -4,10 +4,10 @@ const initialState = {
   addingTask: false,
   path: 'allTasks',
   taskStatus: [
-    { id: 0, type: 'BackLog 📋', color: '#FA3C4C' },
-    { id: 1, type: 'In Progress 📝', color: '#0084FF' },
-    { id: 2, type: 'Testing 🧪', color: '#FFC300' },
-    { id: 3, type: 'Complete ✅', color: '#44BEC7' },
+    { id: 0, type: '📋 BackLog', color: '#FA3C4C' },
+    { id: 1, type: '📝 In Progress', color: '#0084FF' },
+    { id: 2, type: '🧪 Testing ', color: '#FFC300' },
+    { id: 3, type: '✅ Complete ', color: '#44BEC7' },
   ],
   taskItems: [
     {
@@ -65,6 +65,9 @@ export const taskReducer = (state = initialState, action) => {
 
     case types.SET_DB:
       return { ...state, path: action.payload };
+
+    case types.ADD_TASK_TO_LIST:
+      return { ...state, taskItems: action.payload };
 
     default:
       return state;

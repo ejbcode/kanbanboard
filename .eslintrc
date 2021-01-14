@@ -5,6 +5,7 @@
 
   "rules": {
     "no-console": 0,
+    // "import/no-unresolved":0,
     "react/prop-types": 0,
     "jsx-a11y/no-autofocus": [ 1, {
       "ignoreNonDOM": true

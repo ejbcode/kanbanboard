@@ -1,10 +1,9 @@
-import { AiOutlineFileAdd } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { addTask } from '../../redux/actions/taskActions';
 
 const ButtonStyle = styled.button`
-  width: 100%;
+  width: 50%;
   background: var(--red);
   transition: 0.3s;
 
@@ -24,7 +23,7 @@ const Button = () => {
   };
   return (
     <ButtonStyle type="button" onClick={handleClick} disabled={addingTask}>
-      Add Task <AiOutlineFileAdd />
+      Add Task ➕
     </ButtonStyle>
   );
 };
