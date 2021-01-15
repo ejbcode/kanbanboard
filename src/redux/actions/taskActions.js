@@ -1,10 +1,24 @@
-import { db } from '../../firebaseConfig';
+import { firebase, db } from '../../firebaseConfig';
 import { types } from '../types';
 
-export const changeStatus = (id, step) => ({
-  type: types.CHANGE_STATUS,
-  payload: { id, step },
-});
+export const changeStatus = (id, step) => {
+  console.log({ id });
+  return {
+    type: types.CHANGE_STATUS,
+    payload: { id, step },
+  };
+};
+
+export const changeStatusFB = (id, step) => (dispatch, getState) => {
+  const { path } = getState().tasks;
+  db.collection(`${path}`)
+    .doc(`${id}`)
+    .update({ status: firebase.firestore.FieldValue.increment(step) })
+    .then()
+    .catch(function (error) {
+      console.error('Error writing document: ', error);
+    });
+};
 
 export const addTask = () => ({
   type: types.ADD_TASK,
@@ -21,6 +35,8 @@ export const addTaskInFirestore = (task) => (dispatch, getState) => {
     .add({
       task,
       status: 0,
+      date: Date.now(),
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     })
     .then()
     .catch(function (error) {
@@ -35,14 +51,19 @@ const addToTaskList = (task) => ({
 
 export const loadTask = () => (dispatch, getState) => {
   const { path } = getState().tasks;
-  console.log(path);
-  db.collection(`${path}`).onSnapshot((querySnapshot) => {
-    const docs = [];
-    querySnapshot.forEach((doc) => {
-      docs.push({ ...doc.data(), key: doc.id });
-    });
-    console.log(docs);
+  db.collection(`${path}`)
+    .orderBy('date', 'desc')
+    .onSnapshot((querySnapshot) => {
+      const docs = [];
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), key: doc.id });
+      });
 
-    dispatch(addToTaskList(docs));
-  });
+      dispatch(addToTaskList(docs));
+    });
 };
+
+export const setFilteredStatusId = (filterStatusId) => ({
+  type: types.SET_FILTEREDTASK_STATUS_ID,
+  payload: filterStatusId,
+});

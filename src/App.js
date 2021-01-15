@@ -11,13 +11,14 @@ const App = () => {
   const dispatch = useDispatch();
   const [checking, setChecking] = useState(true);
   useEffect(() => {
-    dispatch(loadTask());
     firebase.auth().onAuthStateChanged(async (user) => {
       if (user?.uid) {
         dispatch(login(user.uid, user.displayName));
         dispatch(setDB(user.uid));
+        dispatch(loadTask());
       } else {
         dispatch(setDB('allTasks'));
+        dispatch(loadTask());
       }
 
       setChecking(false);

@@ -1,6 +1,7 @@
 import { types } from '../types';
 
 const initialState = {
+  filterTaskId: 1,
   addingTask: false,
   path: 'allTasks',
   taskStatus: [
@@ -9,43 +10,7 @@ const initialState = {
     { id: 2, type: '🧪 Testing ', color: '#FFC300' },
     { id: 3, type: '✅ Complete ', color: '#44BEC7' },
   ],
-  taskItems: [
-    {
-      key: '-MQrwTknqK8TCIrL73rs',
-      task: 'stattus3',
-      status: 3,
-    },
-    {
-      key: '-MQrwTknqK8TCIrL753rs',
-      task: 'stattus0',
-      status: 0,
-    },
-    {
-      key: '-MQs-WubZecGv-2eSxHW',
-      task: 'stattus1',
-      status: 1,
-    },
-    {
-      key: '-MQsLobRqmji46s2isG1',
-      task: 'stattus1.2',
-      status: 1,
-    },
-    {
-      key: '-MQsLpZEzICC55G0H60A',
-      task: 'stattus2',
-      status: 2,
-    },
-    {
-      key: '-MQsLrfivT_ba0wueJU1',
-      task: 'complet2',
-      status: 3,
-    },
-    {
-      key: '-MQsLt4Ka3lmT-m0-Tjk',
-      task: 'cmplete3',
-      status: 3,
-    },
-  ],
+  taskItems: [],
 };
 
 export const taskReducer = (state = initialState, action) => {
@@ -68,6 +33,9 @@ export const taskReducer = (state = initialState, action) => {
 
     case types.ADD_TASK_TO_LIST:
       return { ...state, taskItems: action.payload };
+
+    case types.SET_FILTEREDTASK_STATUS_ID:
+      return { ...state, filterTaskId: action.payload };
 
     default:
       return state;

@@ -7,8 +7,6 @@ import BoardItem from './BoardItem';
 const BoardStyle = styled.div`
   width: 100%;
   margin: 1rem;
-  /* border: ${(props) => props.color || 'palevioletred'} 2px solid; */
-
   .title {
     text-align: center;
     padding: 0.2rem;
@@ -88,8 +86,14 @@ const Board = ({ tasks, status }) => {
         )}
       </div>
       <ul>
-        {tasks.map(({ key, task }) => (
-          <BoardItem key={key} id={key} task={task} status={status} />
+        {tasks.map(({ key, task, date }) => (
+          <BoardItem
+            key={key}
+            id={key}
+            task={task}
+            status={status}
+            date={date}
+          />
         ))}
       </ul>
     </BoardStyle>

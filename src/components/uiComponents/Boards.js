@@ -11,21 +11,17 @@ const BoardsStyle = styled.section`
 `;
 
 const Boards = () => {
-  const { taskItems, taskStatus } = useSelector((state) => state.tasks);
-
+  const { taskItems, taskStatus, filterTaskId } = useSelector(
+    (state) => state.tasks
+  );
+  const taskStatusFiltered = filterTaskId
+    ? taskStatus.filter((task) => task.id === filterTaskId)
+    : taskStatus;
   return (
     <BoardsStyle>
-      {taskStatus.map((status) => {
+      {taskStatusFiltered.map((status) => {
         const tasks = taskItems.filter((task) => task.status === status.id);
-        return (
-          <Board
-            key={status.id}
-            status={status}
-            tasks={tasks}
-            title={status.type}
-            color={status.color}
-          />
-        );
+        return <Board key={status.id} status={status} tasks={tasks} />;
       })}
     </BoardsStyle>
   );

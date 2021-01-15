@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { changeStatus } from '../../redux/actions/taskActions';
+import { changeStatus, changeStatusFB } from '../../redux/actions/taskActions';
+import useTimeAgo from '../../hooks/useTimeAgo';
 
 const LiStyle = styled.li`
   min-height: 15rem;
@@ -36,11 +37,13 @@ const LiStyle = styled.li`
   }
 `;
 
-const BoardItem = ({ id, task, status }) => {
+const BoardItem = ({ id, task, status, date }) => {
   const dispatch = useDispatch();
   const handleClick = (step) => {
-    dispatch(changeStatus(id, step));
+    dispatch(changeStatusFB(id, step));
   };
+
+  const timeago = useTimeAgo(date);
   return (
     <>
       <LiStyle color={status.color}>
@@ -55,6 +58,8 @@ const BoardItem = ({ id, task, status }) => {
         )}
         <div className="task">
           <p>{task}</p>
+          <p>{date}</p>
+          <p>{timeago}</p>
         </div>
         {status.id === 3 ? null : (
           <div

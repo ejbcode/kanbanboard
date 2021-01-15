@@ -9,4 +9,5 @@ export const types = {
   SET_DB: '[taskReducer] SetDataBase',
   ADD_TASK: '[taskReducer] AddingTask',
   ADD_TASK_TO_LIST: '[taskReducer] AddingTaskToList',
+  SET_FILTEREDTASK_STATUS_ID: '[taskReducer] SetFilteredStatusId',
 };
