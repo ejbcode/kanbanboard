@@ -1,7 +1,8 @@
-import { useSelector } from 'react-redux';
 import { FaAngleDown } from 'react-icons/fa';
 import styled from 'styled-components';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setFilteredStatusId } from '../../redux/actions/taskActions';
 
 const DropStyle = styled.div`
   display: inline-block;
@@ -37,12 +38,14 @@ const DropStyle = styled.div`
 `;
 
 const DropDownLabels = ({ taskStatus }) => {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
   const [task, setTask] = useState();
 
   const handleClick = (status) => {
     setOpen(false);
     setTask(status);
+    dispatch(setFilteredStatusId(status.id));
   };
   return (
     <DropStyle open={open}>
