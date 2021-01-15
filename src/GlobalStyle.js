@@ -41,6 +41,7 @@ const GlobalStyle = createGlobalStyle`${css`
     margin: 0 auto;
     max-width: 1200px;
     width: 95%;
+    min-height: 100vh;
   }
   ul {
     list-style: none;
@@ -87,10 +88,6 @@ const GlobalStyle = createGlobalStyle`${css`
 
   img {
     max-width: 100%;
-  }
-
-  p {
-    margin-bottom: 1.5rem;
   }
 
   .nav-active {

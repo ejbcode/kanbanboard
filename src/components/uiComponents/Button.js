@@ -19,7 +19,7 @@ const Button = () => {
   const { addingTask } = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
   const handleClick = () => {
-    dispatch(addTask());
+    dispatch(addTask(true));
   };
   return (
     <ButtonStyle type="button" onClick={handleClick} disabled={addingTask}>

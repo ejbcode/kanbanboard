@@ -20,8 +20,9 @@ export const changeStatusFB = (id, step) => (dispatch, getState) => {
     });
 };
 
-export const addTask = () => ({
+export const addTask = (open) => ({
   type: types.ADD_TASK,
+  payload: open,
 });
 
 export const setDB = (uid) => ({
@@ -34,11 +35,11 @@ export const addTaskInFirestore = (task) => (dispatch, getState) => {
   db.collection(`${path}`)
     .add({
       task,
-      status: 0,
+      status: 1,
       date: Date.now(),
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     })
-    .then()
+    .then(dispatch(addTask(false)))
     .catch(function (error) {
       console.error('Error writing document: ', error);
     });
@@ -66,4 +67,9 @@ export const loadTask = () => (dispatch, getState) => {
 export const setFilteredStatusId = (filterStatusId) => ({
   type: types.SET_FILTEREDTASK_STATUS_ID,
   payload: filterStatusId,
+});
+
+export const setSearchTerm = (searchTerm) => ({
+  type: types.SET_SEARCH_TERM,
+  payload: searchTerm,
 });

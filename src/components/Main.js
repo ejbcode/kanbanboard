@@ -1,11 +1,16 @@
+import styled from 'styled-components';
 import { Search } from './Search';
 import Boards from './uiComponents/Boards';
 
+const MainStyle = styled.main`
+  padding-bottom: 10rem;
+`;
+
 const Main = () => (
-  <main>
+  <MainStyle>
     <Search />
     <Boards />
-  </main>
+  </MainStyle>
 );
 
 export default Main;

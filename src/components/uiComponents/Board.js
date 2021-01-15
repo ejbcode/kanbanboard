@@ -32,15 +32,16 @@ const BoardStyle = styled.div`
 `;
 
 const FormStyle = styled.form`
-  padding: 2rem 4rem;
+  padding: 1rem 3rem;
   background: var(--black);
   border-radius: 0.3rem;
   border-top: #f03c4c solid 0.4rem;
+  margin-top: 1rem;
   textarea {
-    min-height: 10rem;
+    min-height: 8rem;
     width: 100%;
     resize: none;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     padding: 1rem;
   }
   .button-section {

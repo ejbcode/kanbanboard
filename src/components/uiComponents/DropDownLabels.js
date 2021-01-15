@@ -58,7 +58,7 @@ const DropDownLabels = ({ taskStatus }) => {
             {status.type}
           </li>
         ))}
-        <li aria-hidden onClick={() => handleClick()}>
+        <li aria-hidden onClick={() => handleClick(0)}>
           🔎 All tasks
         </li>
       </ul>
