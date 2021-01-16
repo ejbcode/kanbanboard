@@ -37,6 +37,16 @@ const FormStyle = styled.form`
   border-radius: 0.3rem;
   border-top: #f03c4c solid 0.4rem;
   margin-top: 1rem;
+  animation: slideDown 0.5s ease 1 forwards;
+  opacity: 0;
+  position: relative;
+  bottom: 10rem;
+  @keyframes slideDown {
+    to {
+      bottom: 0;
+      opacity: 1;
+    }
+  }
   textarea {
     min-height: 8rem;
     width: 100%;
@@ -59,7 +69,9 @@ const Board = ({ tasks, status }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(addTaskInFirestore(contentNewTask));
+    if (contentNewTask !== '') {
+      dispatch(addTaskInFirestore(contentNewTask));
+    }
   };
 
   const handleChange = (event) => {
@@ -67,7 +79,10 @@ const Board = ({ tasks, status }) => {
   };
   return (
     <BoardStyle color={status.color}>
-      <p className="title">{status.type}</p>
+      <p className="title">
+        {status.type}
+        {tasks.length}
+      </p>
       <div className="new-input">
         {addingTask && (
           <FormStyle onSubmit={handleSubmit}>

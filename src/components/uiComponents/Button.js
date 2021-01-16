@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { addTask } from '../../redux/actions/taskActions';
 
 const ButtonStyle = styled.button`
-  width: 50%;
+  width: 100%;
   background: var(--red);
   transition: 0.3s;
 

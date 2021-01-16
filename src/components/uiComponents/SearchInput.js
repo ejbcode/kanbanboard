@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
@@ -7,9 +6,8 @@ import { setSearchTerm } from '../../redux/actions/taskActions';
 const InputStyle = styled.div`
   border-bottom: gray solid 1px;
   width: 100%;
+  margin: 0 2rem;
 
-  height: 100%;
-  /* height: 2rem; */
   input {
     padding: 1rem 0;
   }
@@ -33,7 +31,7 @@ const SearchInput = () => {
 
   return (
     <InputStyle>
-      <AiOutlineSearch />{' '}
+      <AiOutlineSearch />
       <input type="text" placeholder="Search" onChange={handleChange} />
     </InputStyle>
   );

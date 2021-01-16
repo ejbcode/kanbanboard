@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
-import { changeStatus, changeStatusFB } from '../../redux/actions/taskActions';
+import { useState } from 'react';
+import { changeStatusFB } from '../../redux/actions/taskActions';
 import useTimeAgo from '../../hooks/useTimeAgo';
 
 const LiStyle = styled.li`
@@ -11,6 +12,11 @@ const LiStyle = styled.li`
   border-radius: 0.4rem;
   background: var(--black);
   position: relative;
+  :hover {
+    filter: brightness(1.2);
+
+    cursor: pointer;
+  }
 
   .arrow {
     width: 3rem;
@@ -35,11 +41,6 @@ const LiStyle = styled.li`
     padding: 0.4rem 4rem;
     font-size: 1.5rem;
   }
-  .task-close-button {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
   .task-footer {
     position: absolute;
     bottom: 1rem;
@@ -50,15 +51,21 @@ const LiStyle = styled.li`
 `;
 
 const BoardItem = ({ id, task, status, date }) => {
+  const [taskSelected, setTaskSelected] = useState();
   const dispatch = useDispatch();
   const handleClick = (step) => {
     dispatch(changeStatusFB(id, step));
   };
 
   const timeago = useTimeAgo(date);
+
+  const handleSelectTask = () => {
+    setTaskSelected({ id, task, status, date });
+  };
+  console.log(taskSelected);
   return (
     <>
-      <LiStyle color={status.color}>
+      <LiStyle color={status.color} onClick={handleSelectTask}>
         {status.id < 2 ? null : (
           <div
             className="arrow arrowL"
@@ -69,7 +76,6 @@ const BoardItem = ({ id, task, status, date }) => {
           </div>
         )}
         <div className="task">
-          <div className="task-close-button">x</div>
           <p>{task}</p>
           <div className="task-footer">
             <p>{timeago}</p>

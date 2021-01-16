@@ -8,6 +8,8 @@ const DropStyle = styled.div`
   display: inline-block;
   position: relative;
   white-space: nowrap;
+  width: 70%;
+  text-align: right;
 
   div {
     cursor: pointer;
@@ -17,13 +19,13 @@ const DropStyle = styled.div`
     display: ${(props) => (props.open ? 'flex' : 'none')};
     padding: 1rem 0.5rem;
     flex-direction: column;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.9);
     border: 1px gray solid;
     position: absolute;
     top: 3.5rem;
     right: 0px;
     cursor: pointer;
-    width: 150px;
+    width: 160px;
     z-index: 1;
   }
 
