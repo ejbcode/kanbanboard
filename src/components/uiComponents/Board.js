@@ -87,13 +87,14 @@ const Board = ({ tasks, status }) => {
         {addingTask && (
           <FormStyle onSubmit={handleSubmit}>
             <p>Add new task 📝</p>
-            {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
+            {/* eslint-disable */}
             <textarea
               name="input-task"
               id="input-task"
               autoFocus
               onChange={handleChange}
             />
+            {/* eslint-enable */}
 
             <div className="button-section">
               <button type="submit">Add task</button>
