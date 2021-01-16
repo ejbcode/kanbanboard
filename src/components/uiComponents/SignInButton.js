@@ -40,7 +40,7 @@ const SignInButtonStyle = styled.div`
     justify-items: start;
   }
   .text-container {
-    font-family: Roboto, arial, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1.2rem;
     border: none;
     white-space: nowrap;

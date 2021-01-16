@@ -22,7 +22,6 @@ const GlobalStyle = createGlobalStyle`${css`
     padding: 0;
     -webkit-appearance: none;
   }
-  @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 
   html {
     font-size: 62.5%;
