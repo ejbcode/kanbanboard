@@ -1,11 +1,12 @@
 import { firebase, googleAuthProvider } from '../../firebaseConfig';
 import { types } from '../types';
 
-export const login = (uid, displayName) => ({
+export const login = (uid, displayName, photoURL) => ({
   type: types.login,
   payload: {
     uid,
     displayName,
+    photoURL,
   },
 });
 
@@ -18,7 +19,8 @@ export const logWithGoogle = () => (dispatch) =>
     .auth()
     .signInWithPopup(googleAuthProvider)
     .then(({ user }) => {
-      dispatch(login(user.uid, user.displayName));
+      console.log(user);
+      dispatch(login(user.uid, user.displayName, user.photoURL));
     });
 
 export const logOutFromFirebase = () => (dispatch) => {

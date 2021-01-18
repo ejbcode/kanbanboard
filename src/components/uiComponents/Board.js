@@ -1,16 +1,31 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { addTaskInFirestore } from '../../redux/actions/taskActions';
+import { FaRegTimesCircle } from 'react-icons/fa';
+import { addTask, addTaskInFirestore } from '../../redux/actions/taskActions';
 import BoardItem from './BoardItem';
 
 const BoardStyle = styled.div`
   width: 100%;
   margin: 1rem;
   .title {
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     padding: 0.2rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    span {
+      background: white;
+      color: black;
+      padding: 0 0.6rem;
+      border-radius: 3px;
+      font-size: 1.3rem;
+    }
+  }
+  .form-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
   }
 
   .arrowL {
@@ -55,7 +70,15 @@ const FormStyle = styled.form`
     padding: 1rem;
   }
   .button-section {
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    span {
+      font-size: 2.5rem;
+      margin: 0 1.5rem;
+      padding-top: 0.5rem;
+      color: lightgray;
+    }
   }
   button {
     padding: 0.7rem 2rem;
@@ -77,16 +100,22 @@ const Board = ({ tasks, status }) => {
   const handleChange = (event) => {
     setContentNewTask(event.target.value);
   };
+
+  const handleAbortNewTask = () => {
+    dispatch(addTask(false));
+  };
   return (
     <BoardStyle color={status.color}>
-      <p className="title">
-        {status.type}
-        {tasks.length}
-      </p>
+      <div className="title">
+        <p>{status.type}</p>
+        <span>{tasks.length}</span>
+      </div>
       <div className="new-input">
         {addingTask && (
           <FormStyle onSubmit={handleSubmit}>
-            <p>Add new task 📝</p>
+            <div className="form-header">
+              <p>Add new task 📝</p>
+            </div>
             {/* eslint-disable */}
             <textarea
               name="input-task"
@@ -97,7 +126,10 @@ const Board = ({ tasks, status }) => {
             {/* eslint-enable */}
 
             <div className="button-section">
-              <button type="submit">Add task</button>
+              <span>
+                <FaRegTimesCircle onClick={handleAbortNewTask} />
+              </span>
+              <button type="submit">Save</button>
             </div>
           </FormStyle>
         )}

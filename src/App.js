@@ -19,7 +19,7 @@ const App = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged(async (user) => {
       if (user?.uid) {
-        dispatch(login(user.uid, user.displayName));
+        dispatch(login(user.uid, user.displayName, user.photoURL));
         dispatch(setDB(user.uid));
         dispatch(loadTask());
       } else {

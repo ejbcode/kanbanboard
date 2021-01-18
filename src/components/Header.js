@@ -27,7 +27,7 @@ const NavStyled = styled.nav``;
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn, name } = useSelector((state) => state.auth);
+  const { isLoggedIn, name, photoURL } = useSelector((state) => state.auth);
 
   const handleGoogleSignIn = () => {
     dispatch(logWithGoogle());
@@ -49,6 +49,7 @@ const Header = () => {
             <p>
               Hi,
               <span> {name}</span>
+              <img src={photoURL} alt="Profile" />
             </p>
             <LogOutButton handleLogOut={handleLogOut} />
           </>

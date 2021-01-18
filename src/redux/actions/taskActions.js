@@ -73,3 +73,34 @@ export const setSearchTerm = (searchTerm) => ({
   type: types.SET_SEARCH_TERM,
   payload: searchTerm,
 });
+
+export const setTaskToEdit = (editId) => ({
+  type: types.SET_TASK_TO_EDIT,
+  payload: editId,
+});
+
+export const deleteTaskFromFB = (id) => (dispatch, getState) => {
+  const { path } = getState().tasks;
+  db.collection(`${path}`)
+    .doc(id)
+    .delete()
+    .then(function () {
+      console.log('Document successfully deleted!');
+    })
+    .catch(function (error) {
+      console.error('Error removing document: ', error);
+    });
+};
+
+export const updateTaskFromFB = (id, task) => (dispatch, getState) => {
+  const { path } = getState().tasks;
+  db.collection(`${path}`)
+    .doc(id)
+    .update({
+      task,
+    })
+    .then(function () {
+      console.log('Document successfully updated!');
+      dispatch(setTaskToEdit(0));
+    });
+};

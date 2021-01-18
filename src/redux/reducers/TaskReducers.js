@@ -2,6 +2,7 @@ import { types } from '../types';
 
 const initialState = {
   filterTaskId: 0,
+  taskToEdit: 0,
   addingTask: false,
   path: 'allTasks',
   searchTerm: '',
@@ -40,6 +41,9 @@ export const taskReducer = (state = initialState, action) => {
 
     case types.SET_SEARCH_TERM:
       return { ...state, searchTerm: action.payload };
+
+    case types.SET_TASK_TO_EDIT:
+      return { ...state, taskToEdit: action.payload };
 
     default:
       return state;

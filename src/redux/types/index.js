@@ -11,4 +11,5 @@ export const types = {
   ADD_TASK_TO_LIST: '[taskReducer] AddingTaskToList',
   SET_FILTEREDTASK_STATUS_ID: '[taskReducer] SetFilteredStatusId',
   SET_SEARCH_TERM: '[taskReducer] SetSearchTerm',
+  SET_TASK_TO_EDIT: '[taskReducer] SetTaskToEdit',
 };

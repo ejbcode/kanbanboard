@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { changeStatusFB } from '../../redux/actions/taskActions';
+import { changeStatusFB, setTaskToEdit } from '../../redux/actions/taskActions';
 import useTimeAgo from '../../hooks/useTimeAgo';
+import EditForm from './EditForm';
 
 const LiStyle = styled.li`
   min-height: 15rem;
@@ -12,11 +13,6 @@ const LiStyle = styled.li`
   border-radius: 0.4rem;
   background: var(--black);
   position: relative;
-  :hover {
-    filter: brightness(1.2);
-
-    cursor: pointer;
-  }
 
   .arrow {
     width: 3rem;
@@ -40,6 +36,19 @@ const LiStyle = styled.li`
   .task {
     padding: 0.4rem 4rem;
     font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .task-description {
+    position: absolute;
+    height: calc(100% - 40px);
+    width: calc(100% - 80px);
+    flex: 1 0 auto;
+    :hover {
+      filter: brightness(1.2);
+      cursor: pointer;
+    }
   }
   .task-footer {
     position: absolute;
@@ -51,44 +60,54 @@ const LiStyle = styled.li`
 `;
 
 const BoardItem = ({ id, task, status, date }) => {
-  const [taskSelected, setTaskSelected] = useState();
+  const { taskToEdit } = useSelector((state) => state.tasks);
+  console.log({ taskToEdit });
   const dispatch = useDispatch();
   const handleClick = (step) => {
     dispatch(changeStatusFB(id, step));
   };
 
   const timeago = useTimeAgo(date);
+  // const tasktoedit = '1TpCmIjvOUXnZ2fNHN2R';
 
   const handleSelectTask = () => {
-    setTaskSelected({ id, task, status, date });
+    dispatch(setTaskToEdit(id));
   };
-  console.log(taskSelected);
+
   return (
     <>
-      <LiStyle color={status.color} onClick={handleSelectTask}>
-        {status.id < 2 ? null : (
-          <div
-            className="arrow arrowL"
-            onClick={() => handleClick(-1)}
-            aria-hidden
-          >
-            <FaChevronLeft />
-          </div>
-        )}
-        <div className="task">
-          <p>{task}</p>
-          <div className="task-footer">
-            <p>{timeago}</p>
-          </div>
-        </div>
-        {status.id > 3 ? null : (
-          <div
-            className="arrow arrowR"
-            onClick={() => handleClick(+1)}
-            aria-hidden
-          >
-            <FaChevronRight />
-          </div>
+      <LiStyle color={status.color}>
+        {taskToEdit === id ? (
+          <EditForm id={id} task={task} />
+        ) : (
+          <>
+            {status.id < 2 ? null : (
+              <div
+                className="arrow arrowL"
+                onClick={() => handleClick(-1)}
+                aria-hidden
+              >
+                <FaChevronLeft />
+              </div>
+            )}
+            <div className="task" onClick={handleSelectTask} aria-hidden>
+              <div className="task-description">
+                <p>{task}</p>
+              </div>
+              <div className="task-footer">
+                <p>{timeago}</p>
+              </div>
+            </div>
+            {status.id > 3 ? null : (
+              <div
+                className="arrow arrowR"
+                onClick={() => handleClick(+1)}
+                aria-hidden
+              >
+                <FaChevronRight />
+              </div>
+            )}
+          </>
         )}
       </LiStyle>
     </>
