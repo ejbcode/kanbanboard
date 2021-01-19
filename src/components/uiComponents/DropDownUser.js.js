@@ -8,9 +8,8 @@ const DropStyle = styled.div`
   display: inline-block;
   position: relative;
   white-space: nowrap;
-  width: 100%;
-  text-align: center;
-  margin-top: 1.5rem;
+  width: 70%;
+  text-align: right;
 
   div {
     cursor: pointer;
@@ -40,33 +39,17 @@ const DropStyle = styled.div`
   }
 `;
 
-const DropDownLabels = ({ taskStatus }) => {
-  const dispatch = useDispatch();
-  const [open, setOpen] = useState(false);
-  const [task, setTask] = useState();
-
-  const handleClick = (status) => {
-    setOpen(false);
-    setTask(status);
-    dispatch(setFilteredStatusId(status.id));
-  };
+const DropDownUser = ({ open }) => {
+  const handleClick = (status) => {};
   return (
     <DropStyle open={open}>
-      <div onClick={() => setOpen(!open)} aria-hidden>
-        {task?.type ?? '🔎 AllTask'} <FaAngleDown />
-      </div>
-      <ul className="dropdown">
-        {taskStatus.map((status) => (
-          <li key={status.id} aria-hidden onClick={() => handleClick(status)}>
-            {status.type}
-          </li>
-        ))}
-        <li aria-hidden onClick={() => handleClick(0)}>
-          🔎 All tasks
-        </li>
-      </ul>
+      <div
+        // onClick={() => setOpen(!open)}
+        aria-hidden
+      />
+      {open && <h1>Hell yeah</h1>}
     </DropStyle>
   );
 };
 
-export default DropDownLabels;
+export default DropDownUser;

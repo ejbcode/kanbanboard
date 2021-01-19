@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const LogOutButtonStyle = styled.div`
   margin: 1rem;
+  padding: 0.5rem 1rem;
   display: inline-block;
   /* height: 5rem; */
   background-color: gray;
@@ -28,7 +29,7 @@ const LogOutButtonStyle = styled.div`
   }
 
   .text-container {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     border: none;
     white-space: nowrap;
     align-self: center;

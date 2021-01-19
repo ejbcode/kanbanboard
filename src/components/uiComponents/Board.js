@@ -7,7 +7,7 @@ import BoardItem from './BoardItem';
 
 const BoardStyle = styled.div`
   width: 100%;
-  margin: 1rem;
+  margin: 1rem 0;
   .title {
     display: flex;
     flex-direction: row;
@@ -43,6 +43,9 @@ const BoardStyle = styled.div`
   }
 
   .new-input {
+  }
+  @media screen and (min-width: 768px) {
+    margin: 1rem;
   }
 `;
 

@@ -8,6 +8,7 @@ import Clock from './uiComponents/Clock';
 import TheDate from './uiComponents/TheDate';
 import LogOutButton from './uiComponents/LogOutButton';
 import SignInButton from './uiComponents/SignInButton';
+import LoggedInUI from './uiComponents/LoggedInUI';
 
 const HeaderStyle = styled.header`
   display: flex;
@@ -27,18 +28,15 @@ const NavStyled = styled.nav``;
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { isLoggedIn, name, photoURL } = useSelector((state) => state.auth);
+  const { isLoggedIn } = useSelector((state) => state.auth);
 
   const handleGoogleSignIn = () => {
     dispatch(logWithGoogle());
   };
 
-  const handleLogOut = () => {
-    dispatch(logOutFromFirebase());
-  };
   return (
     <HeaderStyle>
-      <NavStyled>📋KanbanBoard</NavStyled>
+      <NavStyled>📋Kn Board</NavStyled>
       <div className="time">
         <Clock />
         <TheDate />
@@ -46,16 +44,10 @@ const Header = () => {
       <div className="user">
         {isLoggedIn ? (
           <>
-            <p>
-              Hi,
-              <span> {name}</span>
-              <img src={photoURL} alt="Profile" />
-            </p>
-            <LogOutButton handleLogOut={handleLogOut} />
+            <LoggedInUI />
           </>
         ) : (
           <>
-            <p>Hello,</p>
             <SignInButton handleGoogleSignIn={handleGoogleSignIn} />
           </>
         )}

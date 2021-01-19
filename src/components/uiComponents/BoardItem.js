@@ -61,7 +61,6 @@ const LiStyle = styled.li`
 
 const BoardItem = ({ id, task, status, date }) => {
   const { taskToEdit } = useSelector((state) => state.tasks);
-  console.log({ taskToEdit });
   const dispatch = useDispatch();
   const handleClick = (step) => {
     dispatch(changeStatusFB(id, step));

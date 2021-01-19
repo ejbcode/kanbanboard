@@ -104,3 +104,16 @@ export const updateTaskFromFB = (id, task) => (dispatch, getState) => {
       dispatch(setTaskToEdit(0));
     });
 };
+
+export const deleAllTasks = () => (dispatch, getState) => {
+  const { path } = getState().tasks;
+
+  firebase
+    .database()
+    .ref(path)
+    .remove()
+
+    .then(function () {
+      console.log('Document successfully deleted!');
+    });
+};
