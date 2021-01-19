@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FaAngleDown } from 'react-icons/fa';
 import styled from 'styled-components';
 import { useState } from 'react';
@@ -53,7 +54,7 @@ const DropDownLabels = ({ taskStatus }) => {
   return (
     <DropStyle open={open}>
       <div onClick={() => setOpen(!open)} aria-hidden>
-        {task?.type ?? '🔎 AllTask'} <FaAngleDown />
+        {task?.type ?? '🔎 All task'} <FaAngleDown />
       </div>
       <ul className="dropdown">
         {taskStatus.map((status) => (
@@ -67,6 +68,10 @@ const DropDownLabels = ({ taskStatus }) => {
       </ul>
     </DropStyle>
   );
+};
+
+DropDownLabels.propTypes = {
+  taskStatus: PropTypes.array,
 };
 
 export default DropDownLabels;

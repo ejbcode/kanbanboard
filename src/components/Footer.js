@@ -15,18 +15,21 @@ const FooterStyle = styled.footer`
   text-align: center;
   padding: 0 rem 0;
   padding-bottom: 1.5rem;
-  p > * {
+  .logos > * {
     margin: 0 2rem;
   }
 `;
 
 const Footer = () => (
   <FooterStyle>
-    <p>
-      Made with <hr />
+    <div>
+      <span>Made with</span>
+    </div>
+    <hr />
+    <div className="logos">
       <SiReact /> <SiRedux /> <SiFirebase />
       <SiStyledComponents />
-    </p>
+    </div>
   </FooterStyle>
 );
 

@@ -1,12 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import {
-  logOutFromFirebase,
-  logWithGoogle,
-} from '../redux/actions/authActions';
+import { logWithGoogle } from '../redux/actions/authActions';
 import Clock from './uiComponents/Clock';
 import TheDate from './uiComponents/TheDate';
-import LogOutButton from './uiComponents/LogOutButton';
 import SignInButton from './uiComponents/SignInButton';
 import LoggedInUI from './uiComponents/LoggedInUI';
 
@@ -21,10 +17,18 @@ const HeaderStyle = styled.header`
     white-space: nowrap;
   }
   .time {
+    flex: 1.2;
+  }
+  .user {
+    flex: 1;
+    text-align: right;
   }
 `;
 
-const NavStyled = styled.nav``;
+const NavStyled = styled.nav`
+  flex: 1;
+  text-align: left;
+`;
 
 const Header = () => {
   const dispatch = useDispatch();

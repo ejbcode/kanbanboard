@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const SignInButtonStyle = styled.div`
@@ -64,5 +65,9 @@ const SignInButton = ({ handleGoogleSignIn }) => (
     </div>
   </SignInButtonStyle>
 );
+
+SignInButton.propTypes = {
+  handleGoogleSignIn: PropTypes.func,
+};
 
 export default SignInButton;

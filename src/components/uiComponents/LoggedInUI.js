@@ -22,10 +22,11 @@ const LogInSectionStyle = styled.div`
 `;
 
 const DropUserStyle = styled.div`
+  text-align: center;
   position: absolute;
   top: 10rem;
   padding: 1rem 0.5rem;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 1);
   border: 1px gray solid;
   top: 3.5rem;
   right: 0px;
@@ -48,7 +49,7 @@ const DropUserStyle = styled.div`
 const LoggedInUI = () => {
   const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const { email, name, photoURL } = useSelector((state) => state.auth);
+  const { name, photoURL } = useSelector((state) => state.auth);
 
   const handleClickOpen = () => {
     setOpen(!open);
@@ -75,10 +76,10 @@ const LoggedInUI = () => {
           <div className="image">
             <img src={photoURL} alt="profile" />
             <p>{name}</p>
-            <hr />
           </div>
+          <hr />
           <button type="button" onClick={handleDeleteAll}>
-            Delete all tasks
+            Delete complete tasks
           </button>
           <hr />
           <LogOutButton handleLogOut={handleLogOut} />

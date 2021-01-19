@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { FaSignOutAlt } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -51,5 +52,9 @@ const LogOutButton = ({ handleLogOut }) => (
     </div>
   </LogOutButtonStyle>
 );
+
+LogOutButton.propTypes = {
+  handleLogOut: PropTypes.func,
+};
 
 export default LogOutButton;

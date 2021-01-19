@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FaRegTimesCircle, FaRegTrashAlt } from 'react-icons/fa';
@@ -74,6 +75,7 @@ const EditForm = ({ id, task }) => {
           name="input-task"
           id="input-task"
           autoFocus
+          maxlength="150"
           value={taskNew}
           onChange={handleChange}
           ref={(ref) => ref && ref.focus()}
@@ -100,6 +102,11 @@ const EditForm = ({ id, task }) => {
       </FormStyle>
     </div>
   );
+};
+
+EditForm.propTypes = {
+  id: PropTypes.string,
+  task: PropTypes.object,
 };
 
 export default EditForm;

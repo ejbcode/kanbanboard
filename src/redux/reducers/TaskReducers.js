@@ -8,7 +8,7 @@ const initialState = {
   searchTerm: '',
   taskStatus: [
     { id: 1, type: '📋 BackLog', color: '#FA3C4C' },
-    { id: 2, type: '📝 In Progress', color: '#0084FF' },
+    { id: 2, type: '📝 In progress', color: '#0084FF' },
     { id: 3, type: '🧪 Testing ', color: '#FFC300' },
     { id: 4, type: '✅ Complete ', color: '#44BEC7' },
   ],

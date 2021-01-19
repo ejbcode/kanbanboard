@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -125,9 +126,9 @@ const Board = ({ tasks, status }) => {
               id="input-task"
               autoFocus
               onChange={handleChange}
+              maxlength="150"
             />
             {/* eslint-enable */}
-
             <div className="button-section">
               <span>
                 <FaRegTimesCircle onClick={handleAbortNewTask} />
@@ -151,4 +152,16 @@ const Board = ({ tasks, status }) => {
     </BoardStyle>
   );
 };
+
+Board.propTypes = {
+  status: PropTypes.shape({
+    color: PropTypes.string,
+    type: PropTypes.string,
+  }),
+  tasks: PropTypes.shape({
+    length: PropTypes.any,
+    map: PropTypes.func,
+  }),
+};
+
 export default Board;

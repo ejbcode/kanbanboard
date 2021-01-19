@@ -6,19 +6,24 @@ import { setSearchTerm } from '../../redux/actions/taskActions';
 const InputStyle = styled.div`
   border-bottom: gray solid 1px;
   width: 100%;
-  margin: 0 2rem;
+  margin: 0;
 
   input {
     padding: 1rem 0;
+    color: lightgray;
+    border: red solid;
   }
   input[type='text'] {
-    width: 50%;
+    width: 95%;
     border: none;
     background: transparent;
   }
   input:active,
   input:focus {
     outline: none;
+  }
+  @media screen and (min-width: 768px) {
+    margin: 0 2rem;
   }
 `;
 
@@ -31,8 +36,8 @@ const SearchInput = () => {
 
   return (
     <InputStyle>
-      <AiOutlineSearch />
       <input type="text" placeholder="Search" onChange={handleChange} />
+      <AiOutlineSearch />
     </InputStyle>
   );
 };

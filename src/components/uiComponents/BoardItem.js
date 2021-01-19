@@ -1,7 +1,7 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaRegEdit } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
 import { changeStatusFB, setTaskToEdit } from '../../redux/actions/taskActions';
 import useTimeAgo from '../../hooks/useTimeAgo';
 import EditForm from './EditForm';
@@ -39,12 +39,23 @@ const LiStyle = styled.li`
     display: flex;
     flex-direction: column;
     height: 100%;
+    :hover span {
+      opacity: 1;
+    }
   }
   .task-description {
     position: absolute;
     height: calc(100% - 40px);
     width: calc(100% - 80px);
     flex: 1 0 auto;
+    span {
+      position: absolute;
+      right: 0px;
+      top: 0px;
+      opacity: 0;
+      font-size: 1.6rem;
+      transition: opacity 0.3s;
+    }
     :hover {
       filter: brightness(1.2);
       cursor: pointer;
@@ -53,7 +64,7 @@ const LiStyle = styled.li`
   .task-footer {
     position: absolute;
     bottom: 1rem;
-    right: 1rem;
+    right: 2.5rem;
     margin: 0;
     color: lightgray;
   }
@@ -92,6 +103,9 @@ const BoardItem = ({ id, task, status, date }) => {
             <div className="task" onClick={handleSelectTask} aria-hidden>
               <div className="task-description">
                 <p>{task}</p>
+                <span>
+                  <FaRegEdit />
+                </span>
               </div>
               <div className="task-footer">
                 <p>{timeago}</p>
@@ -111,6 +125,13 @@ const BoardItem = ({ id, task, status, date }) => {
       </LiStyle>
     </>
   );
+};
+
+BoardItem.propTypes = {
+  date: PropTypes.number,
+  id: PropTypes.string,
+  status: PropTypes.array,
+  task: PropTypes.array,
 };
 
 export default BoardItem;
