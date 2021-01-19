@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "KanbanBoard",
+  "name": "KanbanBoard create with React and Firebase",
   "icons": [
     {
       "src": "favicon.ico",
